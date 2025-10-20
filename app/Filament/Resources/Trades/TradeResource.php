@@ -18,7 +18,8 @@ class TradeResource extends Resource
 {
     protected static ?string $model = Trade::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-chart-bar';
+    protected static ?int $navigationSort = -50;
 
     public static function form(Schema $schema): Schema
     {

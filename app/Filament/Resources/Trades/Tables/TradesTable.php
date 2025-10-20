@@ -19,7 +19,7 @@ class TradesTable
 
                 TextColumn::make('mentor.name')
                     ->label('Mentor')
-                    
+
                     ->placeholder('-'),
 
                 TextColumn::make('pair.symbol_name')
@@ -56,15 +56,21 @@ class TradesTable
 
                 TextColumn::make('entry_time')->dateTime(),
                 TextColumn::make('exit_time')->dateTime(),
+                TextColumn::make('pips')
+                ->label('Pips')
+                ->numeric(0) // format desimal 4 angka
+                ->sortable()
+                ->getStateUsing(fn ($record) => $record->pips ?? '-') // pakai accessor
+                ->color('info'),
 
                 TextColumn::make('created_at')
                     ->dateTime()
-                    
+
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([])
-        
-            
+
+
             ;
     }
 }

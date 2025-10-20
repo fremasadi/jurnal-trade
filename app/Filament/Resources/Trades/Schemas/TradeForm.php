@@ -102,7 +102,7 @@ class TradeForm
                     ->nullable()
                     ->columnSpanFull(),
                 Textarea::make('notes')
-                    ->label('Notes')
+                    ->label('Notes Emotional')
                     ->nullable()
                     ->columnSpanFull(),
 

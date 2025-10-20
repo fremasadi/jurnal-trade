@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Trade extends Model
 {
@@ -44,12 +45,27 @@ class Trade extends Model
         return $this->belongsTo(Pair::class);
     }
 
-    // 🧮 Accessor: hitung selisih harga otomatis (opsional)
     public function getPipsAttribute(): ?float
-    {
-        if ($this->exit_price && $this->entry_price) {
-            return abs($this->exit_price - $this->entry_price);
-        }
-        return null;
+{
+    if ($this->exit_price && $this->entry_price) {
+        // Selisih harga
+        $difference = abs($this->exit_price - $this->entry_price);
+
+        // 1 poin = 10 pips
+        return $difference * 10;
     }
+
+    return null;
+}
+
+    protected static function boot()
+{
+    parent::boot();
+
+    static::creating(function ($trade) {
+        if (Auth::check()) {
+            $trade->user_id = Auth::id();
+        }
+    });
+}
 }
