@@ -10,33 +10,26 @@ use Illuminate\Support\Facades\Auth;
 class StatsOverviewWidget extends BaseWidget
 {
     protected static ?int $sort = 1;
-
-    // Widget mengambil 12 kolom (full width)
     protected int | string | array $columnSpan = 12;
 
     protected function getStats(): array
     {
         $userId = Auth::id();
 
-        // Ambil semua trades user yang sudah closed (ada exit_price)
         $trades = Trade::where('user_id', $userId)
             ->whereNotNull('exit_price')
             ->get();
 
         $totalTrades = $trades->count();
-
-        // Hitung total PnL
         $totalPnL = $trades->sum('pnl_value');
 
+        // Hitung trade berdasarkan result
+        $winTrades = $trades->whereIn('result', ['Profit', 'profit', 'Win', 'win'])->count();
+        $lossTrades = $trades->whereIn('result', ['Loss', 'loss'])->count();
+        $breakEvenTrades = $trades->whereIn('result', ['Break Even', 'break_even', 'break even'])->count();
+
         // Hitung win rate
-        $winTrades = $trades->where('result', 'win')->count();
         $winRate = $totalTrades > 0 ? ($winTrades / $totalTrades) * 100 : 0;
-
-        // Loss trades
-        $lossTrades = $trades->where('result', 'loss')->count();
-
-        // Break even trades
-        $breakEvenTrades = $trades->where('result', 'break_even')->count();
 
         return [
             Stat::make('Total Trades', $totalTrades)

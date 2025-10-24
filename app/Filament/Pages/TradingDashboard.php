@@ -24,14 +24,7 @@ class TradingDashboard extends BaseDashboard
             // Chart PnL per bulan
             \App\Filament\Widgets\TradeChartWidget::class,
 
-            // Statistik mentor milik user
-            \App\Filament\Widgets\MentorStatsWidget::class,
-
-            // Performance per pair
-            \App\Filament\Widgets\PairPerformanceWidget::class,
-
-            // Recent trades user
-            \App\Filament\Widgets\RecentTradesWidget::class,
+        
         ];
     }
 }
