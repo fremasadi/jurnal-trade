@@ -93,6 +93,8 @@ return array(
     'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
     'GrahamCampbell\\ResultType\\' => array($vendorDir . '/graham-campbell/result-type/src'),
     'Fruitcake\\Cors\\' => array($vendorDir . '/fruitcake/php-cors/src'),
+    'Flowframe\\Trend\\Database\\Factories\\' => array($vendorDir . '/flowframe/laravel-trend/database/factories'),
+    'Flowframe\\Trend\\' => array($vendorDir . '/flowframe/laravel-trend/src'),
     'Filament\\Widgets\\' => array($vendorDir . '/filament/widgets/src'),
     'Filament\\Tables\\' => array($vendorDir . '/filament/tables/src'),
     'Filament\\Support\\' => array($vendorDir . '/filament/support/src'),
@@ -119,6 +121,8 @@ return array(
     'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
     'BladeUI\\Icons\\' => array($vendorDir . '/blade-ui-kit/blade-icons/src'),
     'BladeUI\\Heroicons\\' => array($vendorDir . '/blade-ui-kit/blade-heroicons/src'),
+    'Aura\\Web\\_Config\\' => array($vendorDir . '/aura/web/config'),
+    'Aura\\Web\\' => array($vendorDir . '/aura/web/src'),
     'App\\' => array($baseDir . '/app', $vendorDir . '/laravel/pint/app'),
     'AnourValar\\EloquentSerialize\\' => array($vendorDir . '/anourvalar/eloquent-serialize/src'),
 );
